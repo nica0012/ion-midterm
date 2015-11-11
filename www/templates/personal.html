@@ -1,0 +1,47 @@
+<ion-view view-title="Personal">
+
+    <ion-content ng-controller="PersonalCtrl">
+
+        <div class="row">
+            <div class="col col-75">
+                <input type="text" ng-model="newPerson" placeholder="Enter a new task...">
+            </div>
+            <div class="col text-right">
+                <button class="button button-outline button-balanced" ng-click="addTask()">Add</button>
+            </div>
+        </div>
+
+        <div class="list">
+            <div class="item item-button-right" ng-repeat="task in tasks track by $index" ng-show="task != undefined">
+             <ion-checkbox ng-model="task.isChecked" ng-change="foo($index)">
+
+                    {{task.person}}
+
+            </ion-checkbox>
+
+                <button class="button button-assertive" ng-click="removeTask(task)"><i class="icon ion-close-round"></i>
+                </button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
+
+
+<!-- 
+        <ion-list>
+            <ion-item class="item item-button-right" ng-repeat="task in tasks track by $index" ng-show="task != undefined">
+
+
+
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="task.done" onclick="onItemComplete(task)">
+                </label>
+
+
+                {{task}}
+
+                <button class="button button-assertive" ng-click="removeTask($index)"><i class="icon ion-close-round"></i>
+                </button>
+            </ion-item>
+        </ion-list> -->
