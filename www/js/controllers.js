@@ -74,8 +74,18 @@ angular.module('starter.controllers', [])
 
     $scope.foo = function (index) {
         if ($rootScope.vibrateNotification.checked) {
-            if ($scope.tasks[index].isChecked == true) {
-                $cordovaVibration.vibrate(100);
+            
+            
+            var test = $scope.tasks[index].isChecked
+            
+            if (test) {
+              try{ 
+                  $cordovaVibration.vibrate(100);
+              }catch(ex){
+               alert("fake vibrate");   
+              }
+                  
+                  
             }
         }
 
@@ -128,8 +138,18 @@ angular.module('starter.controllers', [])
 
     $scope.foo = function (index) {
         if ($rootScope.vibrateNotification.checked) {
-            if ($scope.tasks[index].isChecked == true) {
-                $cordovaVibration.vibrate(100);
+            
+            
+            var test = $scope.tasks[index].isChecked
+            
+            if (test) {
+              try{ 
+                  $cordovaVibration.vibrate(100);
+              }catch(ex){
+               alert("fake vibrate");   
+              }
+                  
+                  
             }
         }
 
@@ -181,13 +201,22 @@ angular.module('starter.controllers', [])
     }
 
 
-    $scope.foo = function (index) {
+  $scope.foo = function (index) {
         if ($rootScope.vibrateNotification.checked) {
-            if ($scope.tasks[index].isChecked == true) {
-                $cordovaVibration.vibrate(100);
+            
+            
+            var test = $scope.tasks[index].isChecked
+            
+            if (test) {
+              try{ 
+                  $cordovaVibration.vibrate(100);
+              }catch(ex){
+               alert("fake vibrate");   
+              }
+                  
+                  
             }
         }
-
            /*if ($scope.$rootScope.messageNotification.checked) {
                 
 
@@ -203,69 +232,3 @@ angular.module('starter.controllers', [])
 
 });
 
-/*.controller('WorkCtrl', function ($scope, $localStorage) {
-    $scope.todowork = {
-        task: ''
-    };
-
-    if ($localStorage.worktasks) {
-        $scope.tasks = $localStorage.worktasks;
-    } else {
-        $scope.tasks = ['Print Schedule', 'Meeting with Lisa', 'Call John'];
-    }
-
-    $scope.addTask = function () {
-        if ($scope.todowork.task) {
-
-            $scope.tasks.push($scope.todowork.task);
-
-            $localStorage.worktasks = $scope.tasks;
-
-            $scope.todowork.task = '';
-        } else {
-            alert('Please enter a valid todo task!');
-        }
-    }
-
-    $scope.removeTask = function (index) {
-        delete $scope.tasks[index];
-
-        $localStorage.worktasks = $scope.tasks;
-
-    }
-})*/
-
-/*.controller('OtherCtrl', function ($scope, $localStorage) {
-    $scope.todoother = {
-        task: ''
-    };
-
-    if ($localStorage.othertasks) {
-        $scope.tasks = $localStorage.othertasks;
-    } else {
-        $scope.tasks = ['Call Timmy', 'Clean Room', 'Email Johnny'];
-    }
-
-    $scope.addTask = function () {
-        if ($scope.todoother.task) {
-
-            $scope.tasks.push($scope.todoother.task);
-
-            $localStorage.othertasks = $scope.tasks;
-
-            $scope.todoother.task = '';
-        } else {
-            alert('Please enter a valid todo task!');
-        }
-    }
-
-    $scope.removeTask = function (index) {
-        delete $scope.tasks[index];
-
-        $localStorage.othertasks = $scope.tasks;
-
-    }
-});*/
-
-//.controller('PlaylistCtrl', function($scope, $stateParams) {
-//});
