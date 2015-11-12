@@ -1,31 +1,25 @@
-<!--
 <ion-view view-title="Work">
-  <ion-content>
-    <h1>Work</h1>
-  </ion-content>
-</ion-view>
--->
 
-<ion-view view-title="Work">
-    <ion-content>
+    <ion-content ng-controller="WorkCtrl">
 
         <div class="row">
             <div class="col col-75">
-                <input type="text" ng-model="todowork.task" placeholder="Enter a new task...">
+                <input type="text" ng-model="newWork" placeholder="Enter a new task...">
             </div>
             <div class="col text-right">
-                <button class="button button-balanced" ng-click="addTask()">Add</button>
+                <button class="button button-outline button-balanced" ng-click="addTask()">Add</button>
             </div>
         </div>
 
         <div class="list">
             <div class="item item-button-right" ng-repeat="task in tasks track by $index" ng-show="task != undefined">
-                <ion-checkbox ng-model="isChecked" click="vibrate">
-                    {{task}}
+             <ion-checkbox ng-model="task.isChecked" ng-change="foo($index)">
 
-                </ion-checkbox>
+                    {{task.work}}
 
-                <button class="button button-assertive" ng-click="removeTask($index)"><i class="icon ion-close-round"></i>
+            </ion-checkbox>
+
+                <button class="button button-assertive" ng-click="removeTask(task)"><i class="icon ion-close-round"></i>
                 </button>
             </div>
         </div>

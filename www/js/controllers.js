@@ -92,6 +92,115 @@ angular.module('starter.controllers', [])
 
     };
 
+})
+
+.controller('WorkCtrl', function ($scope, LocalStorageService, $rootScope, $cordovaVibration, $cordovaLocalNotification) {
+
+    //sync with localstorage
+
+    if (LocalStorageService.getStorageList('workList')) {
+        $scope.tasks = JSON.parse(LocalStorageService.getStorageList('workList'));
+    } 
+    else {
+        $scope.tasks = [];
+
+    }
+    
+    //add a new item
+    $scope.addTask = function () {
+        if ($scope.newWork != null) {
+            $scope.tasks.push({work:$scope.newWork, isChecked: false});
+            LocalStorageService.setStorageList('workList', JSON.stringify($scope.tasks));
+            $scope.newWork = '';
+        } else {
+            alert('Please enter a valid todo task!');
+        }
+    }
+    
+    //remove an item
+    $scope.removeTask = function (work) {
+        //delete $scope.tasks[index];
+        var i = $scope.tasks.indexOf(work);
+        $scope.tasks.splice(i, 1);
+        LocalStorageService.setStorageList('workList', JSON.stringify($scope.tasks));
+    }
+
+
+    $scope.foo = function (index) {
+        if ($rootScope.vibrateNotification.checked) {
+            if ($scope.tasks[index].isChecked == true) {
+                $cordovaVibration.vibrate(100);
+            }
+        }
+
+           /*if ($scope.$rootScope.messageNotification.checked) {
+                
+
+                    $cordovaLocalNotification.schedule({
+
+                        alert("Notification");
+
+                    });
+                }
+            }*/
+
+    };
+
+})
+
+
+.controller('OtherCtrl', function ($scope, LocalStorageService, $rootScope, $cordovaVibration, $cordovaLocalNotification) {
+
+    //sync with localstorage
+
+    if (LocalStorageService.getStorageList('otherList')) {
+        $scope.tasks = JSON.parse(LocalStorageService.getStorageList('otherList'));
+    } 
+    else {
+        $scope.tasks = [];
+
+    }
+    
+    //add a new item
+    $scope.addTask = function () {
+        if ($scope.newOther != null) {
+            $scope.tasks.push({other:$scope.newOther, isChecked: false});
+            LocalStorageService.setStorageList('otherList', JSON.stringify($scope.tasks));
+            $scope.newOther = '';
+        } else {
+            alert('Please enter a valid todo task!');
+        }
+    }
+    
+    //remove an item
+    $scope.removeTask = function (other) {
+        //delete $scope.tasks[index];
+        var i = $scope.tasks.indexOf(other);
+        $scope.tasks.splice(i, 1);
+        LocalStorageService.setStorageList('otherList', JSON.stringify($scope.tasks));
+    }
+
+
+    $scope.foo = function (index) {
+        if ($rootScope.vibrateNotification.checked) {
+            if ($scope.tasks[index].isChecked == true) {
+                $cordovaVibration.vibrate(100);
+            }
+        }
+
+           /*if ($scope.$rootScope.messageNotification.checked) {
+                
+
+                    $cordovaLocalNotification.schedule({
+
+                        alert("Notification");
+
+                    });
+                }
+            }*/
+
+    };
+
 });
 
 /*.controller('WorkCtrl', function ($scope, $localStorage) {
