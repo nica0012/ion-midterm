@@ -71,7 +71,7 @@ angular.module('starter.controllers', [])
         LocalStorageService.setStorageList('personalList', JSON.stringify($scope.tasks));
     }
 
-   // var counter;
+   // var counter =0;
     $scope.foo = function (index) {
 
         if ($rootScope.vibrateNotification.checked) {
@@ -81,7 +81,7 @@ angular.module('starter.controllers', [])
             
             if (test) {
               try{ 
-                  $cordovaVibration.vibrate(100);
+                $cordovaVibration.vibrate(100);
               }catch(ex){
                alert("vibrate");   
               }
