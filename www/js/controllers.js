@@ -71,8 +71,9 @@ angular.module('starter.controllers', [])
         LocalStorageService.setStorageList('personalList', JSON.stringify($scope.tasks));
     }
 
-
+   // var counter;
     $scope.foo = function (index) {
+
         if ($rootScope.vibrateNotification.checked) {
             
             
@@ -82,7 +83,7 @@ angular.module('starter.controllers', [])
               try{ 
                   $cordovaVibration.vibrate(100);
               }catch(ex){
-               alert("fake vibrate");   
+               alert("vibrate");   
               }
                   
                   
@@ -90,15 +91,24 @@ angular.module('starter.controllers', [])
         }
 
            /*if ($scope.$rootScope.messageNotification.checked) {
-                
+               for(var i = 0; i < $scope.tasks.length(); i++){
+                    if($scope.tasks[i].isChecked == true){
+                        counter ++;
+                    }
+                   if($scope.tasks[i].isChecked == false){
+                            counter --;
+                        }
+                   if(counter == $scope.tasks.length()){
 
-                    $cordovaLocalNotification.schedule({
+                        $cordovaLocalNotification.schedule({
 
-                        alert("Notification");
+                            alert("Notification");
 
-                    });
-                }
+                        });
+                   }
             }*/
+            
+        //}
 
     };
 
@@ -137,21 +147,21 @@ angular.module('starter.controllers', [])
 
 
     $scope.foo = function (index) {
-        if ($rootScope.vibrateNotification.checked) {
-            
-            
-            var test = $scope.tasks[index].isChecked
-            
-            if (test) {
-              try{ 
-                  $cordovaVibration.vibrate(100);
-              }catch(ex){
-               alert("fake vibrate");   
-              }
-                  
-                  
+        
+            if ($rootScope.vibrateNotification.checked) {
+
+
+                var test = $scope.tasks[index].isChecked
+
+                if (test) {
+                  try{ 
+                      $cordovaVibration.vibrate(100);
+                  }catch(ex){
+                   alert("vibrate");   
+                  }
+
+                }
             }
-        }
 
            /*if ($scope.$rootScope.messageNotification.checked) {
                 
@@ -211,7 +221,7 @@ angular.module('starter.controllers', [])
               try{ 
                   $cordovaVibration.vibrate(100);
               }catch(ex){
-               alert("fake vibrate");   
+               alert("vibrate");   
               }
                   
                   
